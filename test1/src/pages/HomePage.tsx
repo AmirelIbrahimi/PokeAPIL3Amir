@@ -24,7 +24,7 @@ const HomePage = ({ favorites, toggleFavorite }) => {
                     };
                 })
             );
-            // test github
+
 
             setPokemons(pokemonDetails);
         };

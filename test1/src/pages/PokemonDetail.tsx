@@ -49,6 +49,7 @@ const PokemonDetail = () => {
                     {pokemon.abilities.map((abilityObject, index) => (
                         <li key={index}>{abilityObject.ability.name}</li>
                     ))}
+
                 </ul></p>
             </div>
         </div>
