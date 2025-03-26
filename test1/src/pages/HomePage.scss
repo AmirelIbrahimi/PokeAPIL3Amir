@@ -1,11 +1,12 @@
 .home-wrapper {
-    padding: 20px;
+    padding: 40px;
     text-align: center;
 }
 
 .home-title {
     font-size: 2rem;
     color: #f9f9f9;
+    padding: 20px;
 }
 
 .search-bar {
@@ -15,6 +16,68 @@
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
+}
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.category-item {
+    flex-basis: calc(25% - 10px);
+    height: 180px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .region-name {
+        font-weight: bold;
+        font-size: 1.5rem;
+        //margin-bottom: 8px;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        background-color: #e0e0e0;
+    }
+    .starter-sprites {
+        display: flex;
+        justify-content: center;
+        gap: -5px;
+    }
+    .starter-sprite {
+        width: 125px;
+        height: 125px;
+    }
+
+    // Kleuren voor elke regio
+    &:nth-child(1) { background-color: #FF1111; color: white; } // Kanto (rood)
+    &:nth-child(2) { background-color: #DAA520; color: white; } // Johto (goud)
+    &:nth-child(3) { background-color: #1F4E9C; color: white; } // Hoenn (saffier)
+    &:nth-child(4) { background-color: #AAAAFF; color: black; } // Sinnoh (pearl)
+    &:nth-child(5) { background-color: #444444; color: white; } // Unova (zwart)
+    &:nth-child(6) { background-color: #1a53ff; color: white; } // Kalos (blauw)
+    &:nth-child(7) { background-color: #FF9000; color: white; } // Alola (oranje)
+    &:nth-child(8) { background-color: #8040C0; color: white; } // Galar (paars)
+}
+
+
+/* Responsive (for u Bart)*/
+@media (max-width: 768px) {
+    .category-item {
+        flex-basis: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
 }
 
 .pokemon-list {
@@ -38,6 +101,8 @@
 .pokemon-image {
     width: 100px;
     height: 100px;
+    //background-color: rgba(225, 225, 225, 0.4);
+    //border-radius: 50%;
 }
 
 .pokemon-name {
@@ -104,3 +169,4 @@
 .type-dark { background-color: #705848; }
 .type-steel { background-color: #B8B8D0; }
 .type-fairy { background-color: #EE99AC; }
+//bro hoe moet ik het eindigen dan brokie
