@@ -44,13 +44,14 @@ const PokemonDetail = () => {
             <div className="detail-info">
                 <p><strong>Height:</strong> {formatHeight(pokemon.height)}</p>
                 <p><strong>Weight:</strong> {formatWeight(pokemon.weight)}</p>
-                <p><strong>Exp gain:</strong> {pokemon.base_experience}</p>
+                {/*<p><strong>Exp gain:</strong> {pokemon.base_experience}</p>*/}
                 <p><strong>Abilities:</strong><ul>
                     {pokemon.abilities.map((abilityObject, index) => (
                         <li key={index}>{abilityObject.ability.name}</li>
                     ))}
 
                 </ul></p>
+                <Link to="/" className="back-button">Back to List</Link>
             </div>
         </div>
     );
