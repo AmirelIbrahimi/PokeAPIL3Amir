@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './HomePage.scss'; // Import het CSS-bestand
+import './HomePage.scss';
 
 const HomePage = ({ favorites, toggleFavorite }) => {
     const [pokemons, setPokemons] = useState([]);
@@ -10,7 +10,6 @@ const HomePage = ({ favorites, toggleFavorite }) => {
     useEffect(() => {
         const fetchPokemon = async () => {
             const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1300');
-            // "type": "https://pokeapi.co/api/v2/type/"
             const data = await response.json();
             const results = data.results;
 
@@ -21,10 +20,11 @@ const HomePage = ({ favorites, toggleFavorite }) => {
                     return {
                         name: pokemon.name,
                         image: pokemonData.sprites.front_default,
+                        // Types toevoegen
+                        types: pokemonData.types.map(type => type.type.name)
                     };
                 })
             );
-
 
             setPokemons(pokemonDetails);
         };
@@ -51,6 +51,17 @@ const HomePage = ({ favorites, toggleFavorite }) => {
                     <li key={pokemon.name} className="pokemon-card">
                         <img src={pokemon.image} alt={pokemon.name} className="pokemon-image" />
                         <h3 className="pokemon-name">{pokemon.name}</h3>
+                        {/* Types toevoegen */}
+                        <div className="pokemon-types">
+                            {pokemon.types && pokemon.types.map((type) => (
+                                <span
+                                    key={`${pokemon.name}-${type}`}
+                                    className={`type-badge type-${type}`}
+                                >
+                                    {type}
+                                </span>
+                            ))}
+                        </div>
                         <button
                             onClick={() => toggleFavorite(pokemon.name)}
                             className={`favorite-btn ${
