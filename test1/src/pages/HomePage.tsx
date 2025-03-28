@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.scss';
 
-// Object met regio's, hun ID-bereiken en sprites van de starters
+// Object met regio's en sprites van de starters
 const regionData = {
     'Kanto': {
         start: 1,
@@ -99,7 +99,8 @@ const HomePage = ({ favorites, toggleFavorite }) => {
                         id: pokemonData.id,
                         name: pokemon.name,
                         image: pokemonData.sprites.front_default,
-                        types: pokemonData.types.map(type => type.type.name)
+                        types: pokemonData.types.map(type => type.type.name),
+                        stats: pokemonData.stats.map(stat => stat.stat.name)
                     };
                 })
             );
@@ -135,7 +136,7 @@ const HomePage = ({ favorites, toggleFavorite }) => {
         setStarterSprites(sprites);
     };
 
-    // Functie om regio-filter toe te passen
+    // Functie regio-filter
     const handleRegionFilter = (region) => {
         if (selectedRegion === region) {
             // Als dezelfde regio wordt aangeklikt, reset de filter
@@ -146,7 +147,7 @@ const HomePage = ({ favorites, toggleFavorite }) => {
         }
     };
 
-    // Filter pokemons op basis van zoekopdracht en geselecteerde regio
+    // Filter pokemons op regio
     const filteredPokemons = pokemons.filter((pokemon) => {
         // Filter op zoekopdracht
         const matchesSearch = pokemon.name.toLowerCase().includes(search.toLowerCase());
@@ -164,7 +165,8 @@ const HomePage = ({ favorites, toggleFavorite }) => {
 
     return (
         <div className="home-wrapper">
-            <h1 className="home-title">Pokémon List</h1>
+            <h1 className="home-title">Pokédex</h1>
+            <h1 className="sub-title">Regional Pokédex Filter</h1>
 
             {/* Regio-container */}
             <div className="category-container">

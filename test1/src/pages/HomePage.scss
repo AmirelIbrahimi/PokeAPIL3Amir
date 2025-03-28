@@ -4,7 +4,13 @@
 }
 
 .home-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: #f9f9f9;
+    padding: 20px;
+}
+
+.sub-title {
+    font-size: 1.9rem;
     color: #f9f9f9;
     padding: 20px;
 }
@@ -60,24 +66,15 @@
         height: 125px;
     }
 
-    // Kleuren voor elke regio
-    &:nth-child(1) { background-color: #FF1111; color: white; } // Kanto (rood)
-    &:nth-child(2) { background-color: #DAA520; color: white; } // Johto (goud)
-    &:nth-child(3) { background-color: #1F4E9C; color: white; } // Hoenn (saffier)
-    &:nth-child(4) { background-color: #AAAAFF; color: black; } // Sinnoh (pearl)
-    &:nth-child(5) { background-color: #444444; color: white; } // Unova (zwart)
-    &:nth-child(6) { background-color: #1a53ff; color: white; } // Kalos (blauw)
-    &:nth-child(7) { background-color: #FF9000; color: white; } // Alola (oranje)
-    &:nth-child(8) { background-color: #8040C0; color: white; } // Galar (paars)
-}
 
-
-/* Responsive (for u Bart)*/
-@media (max-width: 768px) {
-    .category-item {
-        flex-basis: calc(50% - 10px);
-        margin-bottom: 10px;
-    }
+    &:nth-child(1) { background-color: #FF1111; color: white; } // Kanto
+    &:nth-child(2) { background-color: #DAA520; color: white; } // Johto
+    &:nth-child(3) { background-color: #1F4E9C; color: white; } // Hoenn
+    &:nth-child(4) { background-color: #AAAAFF; color: black; } // Sinnoh
+    &:nth-child(5) { background-color: #444444; color: white; } // Unova
+    &:nth-child(6) { background-color: #1a53ff; color: white; } // Kalos
+    &:nth-child(7) { background-color: #FF9000; color: white; } // Alola
+    &:nth-child(8) { background-color: #8040C0; color: white; } // Galar
 }
 
 .pokemon-list {
@@ -131,7 +128,7 @@
     text-decoration: none;
     color: #007bff;
 }
-// Type badges styling
+
 .pokemon-types {
     display: flex;
     margin: 10px 0;
@@ -169,4 +166,4 @@
 .type-dark { background-color: #705848; }
 .type-steel { background-color: #B8B8D0; }
 .type-fairy { background-color: #EE99AC; }
-//bro hoe moet ik het eindigen dan brokie
+
