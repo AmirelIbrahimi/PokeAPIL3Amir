@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './PokemonDetail.scss';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 const PokemonDetail = () => {
     const { name } = useParams();
@@ -72,55 +73,64 @@ const PokemonDetail = () => {
 
     return (
         <div className="detail-container">
-            <div className="detail-pokemon">
-                <h1 className="detail-pokemon-title">{pokemon.name}</h1>
-                <img
-                    src={pokemon.sprites.front_default}
-                    alt={pokemon.name}
-                    className="detail-pokemon-image"
-                />
-                <div className="detail-pokemon-info">
-                    <p><strong>Height:</strong> {formatHeight(pokemon.height)}</p>
-                    <p><strong>Weight:</strong> {formatWeight(pokemon.weight)}</p>
-                    {/*<p><strong>Exp gain:</strong> {pokemon.base_experience}</p>*/}
-                    <p><strong>Abilities:</strong><ul>
-                        {pokemon.abilities.map((abilityObject, index) => (
-                            <li key={index}>{abilityObject.ability.name}</li>
-                        ))}
-                    </ul></p>
-                    <Link to="/" className="back-button">Back to List</Link>
+            <div className="detail-pokemon-container">
+                <div className="detail-pokemon">
+                    <h1 className="detail-pokemon-title">{pokemon.name}</h1>
+                    <img
+                        src={pokemon.sprites.front_default}
+                        alt={pokemon.name}
+                        className="detail-pokemon-image"
+                    />
+                    <div className="detail-pokemon-info">
+                        <p><strong>Height:</strong> {formatHeight(pokemon.height)}</p>
+                        <p><strong>Weight:</strong> {formatWeight(pokemon.weight)}</p>
+                        {/*<p><strong>Exp gain:</strong> {pokemon.base_experience}</p>*/}
+                        <p><strong>Abilities:</strong><ul>
+                            {pokemon.abilities.map((abilityObject, index) => (
+                                <li key={index}>{abilityObject.ability.name}</li>
+                            ))}
+                        </ul></p>
+                        <Link to="/" className="back-button">Back to List</Link>
+                    </div>
                 </div>
-            </div>
-            <div className="detail-stats">
-                <h2 className="stat-title">Stats</h2>
-                <ul className="stats-list"
-                    style={{ backgroundColor: getPrimaryTypeColor() }}>
-                    {pokemon.stats.map((statObject, index) => {
-                        const statName = statObject.stat.name;
-                        const statValue = statObject.base_stat;
+                <div className="detail-stats">
+                    <h2 className="stat-title">Stats</h2>
+                    <ul className="stats-list"
+                        style={{ backgroundColor: getPrimaryTypeColor() }}>
+                        {pokemon.stats.map((statObject, index) => {
+                            const statName = statObject.stat.name;
+                            const statValue = statObject.base_stat;
 
-                        // Bereken percentage (max base stat is meestal 255)
-                        const maxStat = 255;
-                        const percentage = Math.min((statValue / maxStat) * 100, 100);
+                            // Bereken percentage (max base stat is meestal 255)
+                            const maxStat = 255;
+                            const percentage = Math.min((statValue / maxStat) * 100, 100);
 
-                        return (
-                            <li className={`stat-item stat-${statName}`} key={index}>
-                                <div className="stat-label">
-                                    <strong>{statName}:</strong> {statValue}
-                                </div>
-                                <div className="stat-bar-container">
-                                    <div
-                                        className="stat-bar"
-                                        style={{
-                                            width: `${percentage}%`,
-                                            backgroundColor: statColors[statName] || getPrimaryTypeColor()
-                                        }}
-                                    ></div>
-                                </div>
-                            </li>
-                        );
-                    })}
-                </ul>
+                            return (
+                                <li className={`stat-item stat-${statName}`} key={index}>
+                                    <div className="stat-label">
+                                        <strong>{statName}:</strong> {statValue}
+                                    </div>
+                                    <div className="stat-bar-container">
+                                        <div
+                                            className="stat-bar"
+                                            style={{
+                                                width: `${percentage}%`,
+                                                backgroundColor: statColors[statName] || getPrimaryTypeColor()
+                                            }}
+                                        ></div>
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+                <ResponsiveContainer width="100%" height="80%">
+                    <BarChart data={pokemon.stats}>
+                        <XAxis dataKey="name" stroke="#ffffff" />
+                        <YAxis stroke="#ffffff" />
+                        <Bar dataKey="value" fill="#38bdf8" />
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         </div>
     );
