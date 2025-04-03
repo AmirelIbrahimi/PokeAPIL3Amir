@@ -124,13 +124,32 @@ const PokemonDetail = () => {
                         })}
                     </ul>
                 </div>
-                <ResponsiveContainer width="100%" height="80%">
-                    <BarChart data={pokemon.stats}>
-                        <XAxis dataKey="name" stroke="#ffffff" />
-                        <YAxis stroke="#ffffff" />
-                        <Bar dataKey="value" fill="#38bdf8" />
-                    </BarChart>
-                </ResponsiveContainer>
+            </div>
+            {/**/}
+            <div className="detail-chart">
+                <h2 className="chart-title">Stats Grafiek</h2>
+                <div style={{ width: '1000px', height: '500px', border: '1px solid red' }}>
+                    <ResponsiveContainer width="100%" height="80%">
+                        <BarChart
+                            data={pokemon.stats.map(statObject => ({
+                                name: statObject.stat.name,
+                                value: statObject.base_stat,
+                            }))}
+                            // margin={{top: 5, right: 30, left: 20, bottom: 5}}
+                        >
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Bar
+                                dataKey="value"
+                                fill={getPrimaryTypeColor()}
+                                name="Base Stat"
+                                label={{ position: 'top' }}
+                            />
+
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
         </div>
     );

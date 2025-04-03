@@ -90,7 +90,7 @@
     font-weight: bold;
     text-transform: capitalize;
 }
-
+//begin van stats
 .detail-stats {
     display: flex;
     flex-direction: row;
@@ -152,4 +152,12 @@
 .stat-bar {
     height: 100%;
     transition: width 1s ease-in-out;
+}
+//begin van grafiek stats
+.detail-chart {
+    width: 50%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    //background-color: blue;
 }
