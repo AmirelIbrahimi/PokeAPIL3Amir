@@ -27,9 +27,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-self: center;
+    align-items: center;
     gap: 10px;
+    padding-left: 90px;
     margin-bottom: 20px;
-    width: 100%;
+    width: 90%;
 }
 
 .category-item {
@@ -89,7 +92,7 @@
 .pokemon-card {
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 200px;
+    width: 250px;
     padding: 15px;
     text-align: center;
     background-color: #f9f9f9;

@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import PokemonDetail from "./pages/PokemonDetail";
 import { useState } from "react";
 
-function App() {
+function Favorite() {
     const [favorites, setFavorites] = useState<string[]>([]); // Voeg het type expliciet toe
 
     const toggleFavorite = (pokemon: string) => {
@@ -30,4 +30,4 @@ function App() {
     );
 }
 
-export default App;
+export default Favorite;

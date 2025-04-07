@@ -92,7 +92,7 @@ const HomePage = ({ favorites, toggleFavorite }) => {
             const results = data.results;
 
             const pokemonDetails = await Promise.all(
-                results.map(async (pokemon) => {
+                results.map(async (pokemon: any) => {
                     const pokemonResponse = await fetch(pokemon.url);
                     const pokemonData = await pokemonResponse.json();
                     return {
@@ -100,7 +100,7 @@ const HomePage = ({ favorites, toggleFavorite }) => {
                         name: pokemon.name,
                         image: pokemonData.sprites.front_default,
                         types: pokemonData.types.map(type => type.type.name),
-                        stats: pokemonData.stats.map(stat => stat.stat.name)
+                        // stats: pokemonData.stats.map(stat => stat.stat.name)
                     };
                 })
             );
