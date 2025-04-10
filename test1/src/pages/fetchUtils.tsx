@@ -1,6 +1,7 @@
 // fetchUtils.ts
 import { regionData } from './regionData';
-import type { Pokemon, StarterSprites } from './types';
+import './HomePage.scss';
+import type { Pokemon, StarterSprites } from './Types';
 
 export const fetchPokemon = async (): Promise<Pokemon[]> => {
     const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=898');

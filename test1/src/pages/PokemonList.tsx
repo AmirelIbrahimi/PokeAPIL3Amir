@@ -1,7 +1,7 @@
 // PokemonList.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Pokemon } from './types';
+import { Pokemon } from './Types';
 import { regionData } from './regionData';
 
 interface PokemonListProps {
@@ -28,7 +28,7 @@ const PokemonList: React.FC<PokemonListProps> = ({
         const regionMatch = selectedRegion 
             ? pokemon.id >= regionData[selectedRegion].start && pokemon.id <= regionData[selectedRegion].end
             : true;
-        
+
         return nameMatch && regionMatch;
     });
 
@@ -37,17 +37,19 @@ const PokemonList: React.FC<PokemonListProps> = ({
             {filteredPokemon.map(pokemon => (
                 <div key={pokemon.id} className="pokemon-card">
                     <button
-                        className={`favorite-button ${favorites.includes(pokemon.id) ? 'favorited' : ''}`}
+                        className={`favorite-button ${favorites.includes(pokemon.id) ? 'favorite' : ''}`}
                         onClick={() => toggleFavorite(pokemon.id)}
                     >
-                        {favorites.includes(pokemon.id) ? '★' : '☆'}
+                        {favorites.includes(pokemon.id) ? 'unfavorite' : 'favorite'}
                     </button>
                     <Link to={`/pokemon/${pokemon.id}`}>
                         <img src={pokemon.image} alt={pokemon.name} />
                         <h3>{pokemon.name}</h3>
                         <div className="pokemon-types">
-                            {pokemon.types.map(type => (
-                                <span key={type} className={`type ${type}`}>{type}</span>
+                            {pokemon.types.map((type) => (
+                                <span key={type} className={`type-badge type-${type.toLowerCase()}`}>
+                                {type}
+                                </span>
                             ))}
                         </div>
                     </Link>

@@ -1,6 +1,7 @@
 // RegionSelector.tsx
 import React from 'react';
-import { regionData, Region } from './regionData';
+import { regionData } from './regionData';  // Correcte import voor een named export
+
 
 interface RegionSelectorProps {
     selectedRegion: string;

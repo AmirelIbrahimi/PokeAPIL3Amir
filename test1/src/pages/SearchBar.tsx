@@ -1,6 +1,6 @@
 // SearchBar.tsx
 import React from 'react';
-
+import './HomePage.scss';
 interface SearchBarProps {
     search: string;
     setSearch: (search: string) => void;
@@ -8,14 +8,13 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ search, setSearch }) => {
     return (
-        <div className="search-bar">
             <input
                 type="text"
                 placeholder="Zoek Pokémon..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-        </div>
+
     );
 };
 
